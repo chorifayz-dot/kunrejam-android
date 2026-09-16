@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "KunRejam"
+description = "A focused Android daily planner for personal routines, native reminders, Pomodoro focus sessions, streaks, and offline task tracking."
+version = "1.0.0"
+id = "artifacts/kunrejam"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 18549
+
+[services.development]
+run = "pnpm --filter @workspace/kunrejam run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/kunrejam", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/kunrejam", "run", "serve" ]
+
+[services.env]
+PORT = "18549"
+BASE_PATH = "/"
